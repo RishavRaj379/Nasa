@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Details | NASA STEM Gateway</title>
+<style>
+:root{--blue:#0754a6;--navy:#003b78;--green:#35a853;--ink:#17191d;--muted:#68717d;--line:#dfe3e8;--bg:#f5f6f8}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff}
+.demo-banner{background:#fff4d6;color:#684900;text-align:center;padding:8px 14px;font-size:12px;font-weight:700;letter-spacing:.2px;border-bottom:1px solid #ead69c}
+header{height:88px;background:#050505;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 34px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:800;white-space:nowrap}.brand-mark{width:45px;height:45px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#1673cb,#00336d 70%);border:1px solid #5a9bdd;display:grid;place-items:center;font-size:11px;font-weight:900;position:relative}.brand-mark:after{content:"";position:absolute;width:55px;height:2px;background:#ed332d;transform:rotate(-35deg)}.brand span span{font-weight:400;color:#c5cbd2}
+nav{display:flex;align-items:center;gap:28px;font-size:15px;font-weight:700}nav a{color:#fff;text-decoration:none}.menu-toggle{display:none;background:transparent;color:#fff;border:1px solid #667085;border-radius:6px;padding:9px 12px;font-weight:700;cursor:pointer}.avatar{width:42px;height:42px;border-radius:50%;background:#8ba1b4;display:grid;place-items:center;font-size:22px}
+main{max-width:1600px;margin:auto;padding:24px 30px 42px;min-height:610px}.app-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:32px}.app-id{display:flex;align-items:center;gap:13px}.app-icon{width:36px;height:36px;border-radius:5px;background:#53b0d1;color:white;display:grid;place-items:center;font-size:20px}.eyebrow{font-size:13px;color:#68717d}.app-number{font-size:20px;margin-top:2px}.outline-btn{background:white;border:1px solid #d0d5dc;border-radius:5px;padding:10px 17px;color:var(--blue);cursor:pointer}
+.meta{display:grid;grid-template-columns:160px 220px 190px 1fr;gap:18px;margin:0 24px 16px}.meta strong{display:block;font-size:15px;margin-bottom:7px}.meta a{color:#0754a6;text-decoration:none}.meta div{font-size:14px}
+.progress{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;margin-bottom:14px;overflow:hidden;border-radius:22px}.step{padding:10px 5px;text-align:center;background:#eee;color:#333;font-size:13px;clip-path:polygon(0 0,95% 0,100% 50%,95% 100%,0 100%,5% 50%)}.step.done{background:var(--green);color:white}.step.current{background:#064b91;color:white;font-weight:700}
+.tab{display:inline-block;color:#064b91;font-weight:700;padding:0 13px 12px;border-bottom:4px solid #064b91;font-size:14px}.rule{border-top:1px solid #d4d7dc;margin-top:22px}
+.content{background:#f7f8fa;padding:24px 26px;margin-top:14px;border-radius:3px}.manager{background:white;border:1px solid #dce2e8;border-left:5px solid #0754a6;border-radius:9px;padding:19px 22px;display:flex;justify-content:space-between;align-items:center;gap:20px;box-shadow:0 2px 10px #1018280a;margin-bottom:20px}.manager h2{font-size:17px;margin:0 0 7px}.manager p{margin:0;color:#596270;font-size:14px}.emp-id{color:#0754a6;font-weight:700}.status{font-size:12px;color:#08743a;background:#e9f7ee;border-radius:20px;padding:7px 12px;white-space:nowrap}
+.workspace{display:grid;grid-template-columns:280px 1fr;gap:24px}.side-card,.main-card{background:white;border:1px solid #e1e5ea;border-radius:11px;box-shadow:0 2px 12px #1018280a}.side-card{padding:18px;height:max-content}.side-card .active{background:#f5f6f7;border-left:4px solid #d5d9de;border-radius:8px;padding:16px;font-weight:700}.main-card{padding:28px}.main-card h1{font-size:22px;margin:0 0 8px}.sub{color:#66717d;font-size:14px;line-height:1.5;margin:0 0 24px}
+.decision-row{display:flex;gap:12px;margin:22px 0 6px}.primary,.danger,.secondary{border:0;border-radius:6px;padding:12px 20px;font-weight:700;cursor:pointer;font-size:14px}.primary{background:#0754a6;color:white}.primary:hover{background:#003f82}.danger{background:#fff;color:#a12d2d;border:1px solid #dbaaaa}.secondary{background:#eef1f5;color:#27313d}
+.notice{background:#edf5fc;border:1px solid #cfe1f3;border-radius:7px;padding:13px 15px;color:#234b70;font-size:13px;line-height:1.5;margin:16px 0}
+.hidden{display:none!important}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:700}.field input,.field select,.field textarea{width:100%;border:1px solid #cfd5dd;border-radius:6px;padding:11px 12px;font:14px Arial;background:white}.field textarea{min-height:90px;resize:vertical}.field small{font-size:11px;color:#707985}.required{color:#c22}.filebox{border:1px dashed #aab5c2;padding:12px;border-radius:7px;background:#fbfcfd}.filebox input{border:0;padding:4px 0}.section-title{font-size:16px;margin:24px 0 14px;padding-bottom:9px;border-bottom:1px solid #e6e9ed}
+.success{padding:28px 20px;text-align:center}.success-icon{margin:0 auto 14px;width:54px;height:54px;border-radius:50%;background:#e7f6ec;color:#16823a;display:grid;place-items:center;font-size:28px}.success h2{margin:0 0 8px}.success p{color:#606a75;line-height:1.5}
+footer{background:#050505;color:white;padding:40px 6%;display:flex;align-items:center;gap:38px;min-height:150px}.footer-brand{display:flex;align-items:center;gap:20px;font-size:21px;line-height:1.5;font-weight:600;max-width:340px}.footer-links{display:flex;gap:25px;flex-wrap:wrap;color:#7fa9df;font-size:13px}
+.toast{position:fixed;bottom:20px;right:20px;background:#17212c;color:white;padding:12px 16px;border-radius:7px;box-shadow:0 4px 20px #0003;display:none}
+
+/* Responsive layout */
+header{min-width:0}
+nav a{white-space:nowrap}
+main{width:100%;min-width:0}
+.meta > div{min-width:0;overflow-wrap:anywhere}
+.progress{min-width:0}
+.step{min-width:0;overflow-wrap:anywhere}
+.content,.workspace,.main-card,.side-card{min-width:0}
+.field input,.field select,.field textarea{min-width:0;max-width:100%}
+.filebox{min-width:0}
+.filebox input[type="file"]{max-width:100%;font-size:13px}
+button{touch-action:manipulation}
+@media(max-width:1100px){
+  header{padding:18px 22px;gap:16px}
+  .brand{font-size:20px}
+  nav{gap:15px;font-size:13px;flex-wrap:wrap;justify-content:flex-end}
+  main{padding-left:22px;padding-right:22px}
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr));margin-left:0;margin-right:0}
+  .workspace{grid-template-columns:220px minmax(0,1fr);gap:16px}
+  .main-card{padding:22px}
+}
+@media(max-width:760px){
+  header{height:auto;padding:16px;align-items:flex-start;flex-direction:column;gap:14px}
+  .brand{font-size:19px;white-space:normal}
+  .brand-mark{width:40px;height:40px;flex:none}
+  .menu-toggle{display:inline-flex;align-items:center;gap:8px;min-height:40px}
+  nav{display:none;width:100%;justify-content:flex-start;gap:10px 16px;font-size:13px}
+  nav.open{display:flex}
+  nav a{padding:5px 0}
+  .avatar{width:34px;height:34px;font-size:17px}
+  main{padding:18px 16px 30px;min-height:0}
+  .app-heading{align-items:flex-start;flex-direction:column;gap:14px;margin-bottom:22px}
+  .app-number{font-size:18px}
+  .outline-btn{width:100%;min-height:44px}
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px}
+  .meta strong{font-size:13px;margin-bottom:4px}
+  .meta div{font-size:13px;line-height:1.45}
+  .progress{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;border-radius:10px}
+  .step{clip-path:none;border-radius:5px;padding:9px 5px;font-size:11px;min-height:36px;display:flex;align-items:center;justify-content:center}
+  .tab{padding:0 10px 10px;font-size:13px}
+  .rule{margin-top:16px}
+  .content{padding:14px;margin-top:12px}
+  .manager{padding:16px;gap:12px;margin-bottom:14px}
+  .manager h2{font-size:16px;line-height:1.35}
+  .manager p{font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+  .status{white-space:normal;line-height:1.35}
+  .workspace{grid-template-columns:minmax(0,1fr);gap:14px}
+  .side-card{padding:10px}
+  .side-card .active{padding:12px}
+  .main-card{padding:18px 15px}
+  .main-card h1{font-size:20px;line-height:1.3}
+  .sub{font-size:13px;margin-bottom:18px}
+  .notice{font-size:12px;padding:12px}
+  .decision-row{flex-direction:column;gap:9px;margin-top:18px}
+  .decision-row button{width:100%;min-height:46px}
+  .form-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+  .field.full{grid-column:auto}
+  .field label{line-height:1.4}
+  .field input,.field select,.field textarea{font-size:16px;padding:12px}
+  .field textarea{min-height:105px}
+  .filebox{padding:10px}
+  .filebox input[type="file"]{width:100%;font-size:12px}
+  .section-title{font-size:15px;line-height:1.4;margin:20px 0 12px}
+  footer{padding:28px 18px;align-items:flex-start;flex-direction:column;gap:18px}
+  .footer-brand{font-size:16px;gap:14px}
+  .footer-brand .brand-mark{width:52px!important;height:52px!important}
+  .footer-links{gap:12px 18px;font-size:12px}
+  .toast{left:16px;right:16px;bottom:16px;text-align:center}
+}
+@media(max-width:420px){
+  .meta{grid-template-columns:minmax(0,1fr)}
+  .progress{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .brand{font-size:17px}
+  nav{gap:8px 13px;font-size:12px}
+  .content{padding:10px}
+  .main-card{padding:15px 12px}
+  .manager{padding:13px}
+  .step{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="brand-mark">NASA</div><div>NASA<span>STEM</span>GATEWAY</div></div>
+  <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav">Menu ☰</button><nav id="siteNav"><a href="#">Home</a><a href="#">Explore Opportunities</a><a href="#">NASA Engages</a><a href="#">NASA CONNECTS</a><a href="#">Help ?</a><div class="avatar">●</div></nav>
+</header>
+<main>
+  <div class="app-heading">
+    <div class="app-id"><div class="app-icon">▣</div><div><div class="eyebrow">Application</div><div class="app-number">APP-2393930</div></div></div>
+    <button class="outline-btn" id="withdrawBtn">Withdraw Application</button>
+  </div>
+  <section class="meta">
+    <div><strong>Applicant</strong><a href="#">Shivoham Mishra</a></div>
+    <div><strong>Engagement Opening</strong><a href="#">Open Science Essentials</a></div>
+    <div><strong>Application Status</strong><span id="statusText">Accepted Offer</span></div>
+    <div><strong>Session</strong>NASA Open Science training opportunities FY26</div>
+  </section>
+  <div class="progress">
+    <div class="step done">✓</div><div class="step done">✓</div><div class="step done">✓</div><div class="step done">✓</div>
+    <div class="step current" id="progressAccepted">Accepted Offer</div><div class="step">Declined Offer</div><div class="step">Offer Expired</div><div class="step">Withdrawn</div>
+  </div>
+  <div class="tab">My Application</div><div class="rule"></div>
+  <section class="content">
+    <div class="manager">
+      <div><h2>Application ownership &amp; management</h2><p>This application of <strong>Shivoham Mishra</strong> is managed by <strong>Rishav Raj</strong></p><p style="margin-top:6px">Employee ID: <span class="emp-id">7564528</span></p></div>
+      <span class="status">● Assigned to employee</span>
+    </div>
+    <div class="workspace">
+      <aside class="side-card"><div class="active">Review &amp; Submit</div></aside>
+      <section class="main-card" id="decisionPanel">
+        <h1>Application offer management</h1>
+        <p class="sub">Review the applicant's offer decision and complete the required details below.</p>
+        <div class="notice"><strong>Employee view:</strong> You are viewing this application as the assigned manager, Rishav Raj (Employee ID 7564528). Choose an action to continue.</div>
+        <div class="decision-row">
+          <button class="primary" id="acceptBtn">Accept Offer</button>
+          <button class="danger" id="declineBtn">Decline Offer</button>
+        </div>
+        <div id="acceptFormWrap" class="hidden">
+          <h2 class="section-title">Accept offer — applicant information &amp; documents</h2>
+          <p class="sub">Complete all required fields and attach the requested files. Files are checked in your browser only and are not uploaded anywhere.</p>
+          <form id="acceptForm">
+            <div class="form-grid">
+              <div class="field"><label>Applicant full name <span class="required">*</span></label><input required value="Shivoham Mishra" /></div>
+              <div class="field"><label>Application ID <span class="required">*</span></label><input required value="APP-2393930" /></div>
+              <div class="field"><label>Email address <span class="required">*</span></label><input type="email" required placeholder="applicant@example.com" /></div>
+              <div class="field"><label>Phone number <span class="required">*</span></label><input type="tel" required placeholder="+91 00000 00000" /></div>
+              <div class="field"><label>Portfolio / personal website URL <span class="required">*</span></label><input type="url" required placeholder="https://yourportfolio.example" /></div>
+              <div class="field"><label>LinkedIn profile URL <span class="required">*</span></label><input type="url" required placeholder="https://linkedin.com/in/your-profile" /></div>
+              <div class="field"><label>Highest education / qualification <span class="required">*</span></label><input required placeholder="e.g. B.Sc. Computer Science" /></div>
+              <div class="field"><label>Institution / organization <span class="required">*</span></label><input required placeholder="School, college or organization" /></div>
+              <div class="field"><label>Current location <span class="required">*</span></label><input required placeholder="City, Country" /></div>
+              <div class="field"><label>Relevant experience <span class="required">*</span></label><input required placeholder="e.g. 2 years / Student" /></div>
+              <div class="field full"><label>Why are you accepting this opportunity? <span class="required">*</span></label><textarea required placeholder="Briefly describe your interest and goals..."></textarea></div>
+            </div>
+            <h3 class="section-title">Required documents</h3>
+            <div class="form-grid">
+              <div class="field"><label>Resume / CV (PDF, DOC or DOCX) <span class="required">*</span></label><div class="filebox"><input type="file" required accept=".pdf,.doc,.docx" /></div><small>Maximum recommended size: 10 MB.</small></div>
+              <div class="field"><label>Portfolio file (PDF) <span class="required">*</span></label><div class="filebox"><input type="file" required accept=".pdf" /></div><small>Upload a PDF portfolio to accompany the portfolio URL.</small></div>
+              <div class="field"><label>Proof of enrollment / qualification (PDF or image) <span class="required">*</span></label><div class="filebox"><input type="file" required accept=".pdf,.png,.jpg,.jpeg" /></div></div>
+              <div class="field"><label>Additional supporting document (optional)</label><div class="filebox"><input type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" /></div></div>
+              <div class="field full"><label><input type="checkbox" required style="width:auto"> I confirm that the information and documents provided are accurate and that I have permission to share them. <span class="required">*</span></label></div>
+            </div>
+            <div class="decision-row"><button class="primary" type="submit">Submit acceptance</button><button class="secondary" type="button" id="cancelForm">Cancel</button></div>
+          </form>
+        </div>
+        <div id="declinePanel" class="hidden">
+          <h2 class="section-title">Decline offer</h2>
+          <p class="sub">Please provide a reason for declining this offer.</p>
+          <form id="declineForm">
+            <div class="field"><label>Reason <span class="required">*</span></label><textarea required placeholder="Enter the reason for declining..."></textarea></div>
+            <div class="decision-row"><button class="danger" type="submit">Confirm decline</button><button class="secondary" type="button" id="cancelDecline">Cancel</button></div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="footer-brand"><div class="brand-mark" style="width:66px;height:66px;flex:none">NASA</div><div>National Aeronautics and<br>Space Administration</div></div>
+  <div class="footer-links"><span>No Fear Act</span><span>FOIA</span><span>Privacy Policy</span><span>Privacy Act Notice</span><span>PRA</span><span>Office of Inspector General</span><span>Budget and Annual Reports</span><span>Contact NASA</span><span>Accessibility</span></div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const $=id=>document.getElementById(id);
+const menuToggle=$('menuToggle');
+menuToggle.addEventListener('click',()=>{
+  const nav=$('siteNav');
+  const isOpen=nav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded',String(isOpen));
+  menuToggle.textContent=isOpen?'Close ✕':'Menu ☰';
+});
+function toast(message){const t=$('toast');t.textContent=message;t.style.display='block';setTimeout(()=>t.style.display='none',3500)}
+$('acceptBtn').addEventListener('click',()=>{$('acceptFormWrap').classList.remove('hidden');$('declinePanel').classList.add('hidden');$('acceptFormWrap').scrollIntoView({behavior:'smooth',block:'start'})});
+$('declineBtn').addEventListener('click',()=>{$('declinePanel').classList.remove('hidden');$('acceptFormWrap').classList.add('hidden');$('declinePanel').scrollIntoView({behavior:'smooth',block:'start'})});
+$('cancelForm').addEventListener('click',()=>{$('acceptFormWrap').classList.add('hidden')});
+$('cancelDecline').addEventListener('click',()=>{$('declinePanel').classList.add('hidden')});
+$('acceptForm').addEventListener('submit',e=>{e.preventDefault();if(!$('acceptForm').reportValidity())return;$('decisionPanel').innerHTML='<div class="success"><div class="success-icon">✓</div><h2>Submission complete</h2><p>The acceptance details and selected documents passed the browser form checks.</p><p><strong>confirmation:</strong> APP-2393930 · Shivoham Mishra</p><p style="font-size:12px">This is a local prototype. Nothing was sent to NASA or saved to a server.</p><button class="primary" onclick="location.reload()">Back to application</button></div>';$('statusText').textContent='Acceptance Submitted';$('progressAccepted').textContent='Submitted';toast('submission complete')});
+$('declineForm').addEventListener('submit',e=>{e.preventDefault();if(!e.target.reportValidity())return;$('decisionPanel').innerHTML='<div class="success"><div class="success-icon">✓</div><h2>Offer marked as declined</h2><p>The decline action was recorded in this Official iew only.</p><p style="font-size:12px">No information was sent to NASA or saved to a server.</p><button class="primary" onclick="location.reload()">Back to application</button></div>';$('statusText').textContent='Declined Offer';toast('offer declined')});
+$('withdrawBtn').addEventListener('click',()=>{if(confirm('Withdraw this application?')){ $('statusText').textContent='Withdrawn';toast('application marked withdrawn'); }});
+</script>
+</body>
+</html>
